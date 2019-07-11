@@ -35,5 +35,9 @@ public class DateParserTest {
         format = dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         s = DateParser.parseDate(format);
         Assert.assertEquals(dateTime.toString(), s);
+
+        format = "" + dateTime.toInstant().getEpochSecond();
+        s = DateParser.parseDate(format);
+        Assert.assertEquals(dateTime.toString(), s);
     }
 }
