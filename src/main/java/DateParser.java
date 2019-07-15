@@ -1,5 +1,6 @@
 import java.time.Instant;
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.TemporalAccessor;
@@ -12,7 +13,7 @@ public class DateParser {
                 //Probably unix timestamp
                 long unix = Long.parseLong(s);
                 Instant instant = Instant.ofEpochSecond(unix);
-                OffsetDateTime offsetDateTime = instant.atOffset(OffsetDateTime.now().getOffset());//Assume local offset
+                OffsetDateTime offsetDateTime = instant.atOffset(ZoneOffset.UTC);
                 return DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(offsetDateTime);
             } else {
                 throw new NumberFormatException("Not 10 digit");
