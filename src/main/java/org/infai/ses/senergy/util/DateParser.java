@@ -1,3 +1,5 @@
+package org.infai.ses.senergy.util;
+
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -38,10 +40,9 @@ public class DateParser {
                                     //No standard time format with offset found. Is probably ISO_LOCAL_DATE_TIME. Assume Offset like local offset
                                     String s2 = s + OffsetDateTime.now().getOffset().toString();
                                     TemporalAccessor temporalAccessor = DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(s2);
-                                    String format = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(temporalAccessor);
-                                    return format;
+                                    return DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(temporalAccessor);
                                 } catch (DateTimeParseException dtpe6) {
-                                    System.err.println("DateParser could not parse date!\nInput String was: " + s);
+                                    System.err.println("org.infai.ses.senergy.util.DateParser could not parse date!\nInput String was: " + s);
                                     return "0";
                                 }
                             }
