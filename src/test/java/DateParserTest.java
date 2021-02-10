@@ -40,5 +40,9 @@ public class DateParserTest {
         format = "" + dateTime.toInstant().getEpochSecond();
         s = DateParser.parseDate(format);
         Assert.assertEquals(dateTime.atZoneSameInstant(ZoneOffset.UTC).toString(), s);
+
+        format = "" + dateTime.toInstant().toEpochMilli();
+        s = DateParser.parseDate(format);
+        Assert.assertEquals(dateTime.atZoneSameInstant(ZoneOffset.UTC).toString(), s);
     }
 }
